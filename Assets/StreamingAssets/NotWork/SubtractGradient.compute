@@ -1,0 +1,31 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Subtract
+#include "GetCardinal.compute"
+
+float GradientScale;
+uint2 MapSize;
+
+RWStructuredBuffer<float4> CurrentVelocity;
+StructuredBuffer<float4> PastPressure, PastVelocity, Walls;
+
+[numthreads(64,1,1)]
+void Subtract (uint3 id : SV_DispatchThreadID)
+{
+    uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
+    
+    if (coord.y >= MapSize.y)
+        return;
+
+    float4 presCenter = PastPressure[id.x];
+    
+    float4x4 cardinal = GetCardinal(int2(coord), int2(MapSize), Walls, PastPressure, presCenter);
+
+    // Enforce the free-slip boundary condition:
+    float2 oldV = PastVelocity[id.x];
+    // Gradient = Pressure <East - West, North - South> 
+    float2 grad = float2(cardinal._21 - cardinal._41, cardinal._11 - cardinal._31) * GradientScale;
+    float2 newV = oldV - grad;
+
+    CurrentVelocity[id.x].xy = newV;
+}

@@ -1,0 +1,28 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Impulse
+
+uint2 MapSize;
+float2 Point, Fill;
+float Radius;
+
+RWStructuredBuffer<float4> Current;
+StructuredBuffer<float4> Past;
+
+[numthreads(64,1,1)]
+void Impulse (uint3 id : SV_DispatchThreadID)
+{
+    uint2 coord = uint2(id.x % MapSize.x, uint(floor(float(id.x) / float(MapSize.x))));
+    
+    if (coord.y >= MapSize.y)
+        return;
+    
+    float dist = distance(coord, Point);
+
+    float impulse = dist < Radius ? min((Radius - dist) * 0.5f, 1.0f) : 0;
+    
+    float4 source = Past[id.x];
+    source.xy = max(float2(0, 0), lerp(source.xy, Fill, impulse));
+    
+    Current[id.x] = float4(1, 1, 1, 1);
+}

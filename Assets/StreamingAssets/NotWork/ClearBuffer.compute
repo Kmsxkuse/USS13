@@ -1,0 +1,18 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel ClearBuffer
+
+uint2 MapSize;
+
+RWStructuredBuffer<float4> TargetBuffer;
+
+[numthreads(64,1,1)]
+void ClearBuffer (uint3 id : SV_DispatchThreadID)
+{
+    uint coordY = floor(id.x / MapSize.x);
+    
+    if (coordY >= MapSize.y)
+        return;
+
+    TargetBuffer[id.x] = 0;
+}

@@ -1,0 +1,24 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Divergence
+#include "GetCardinal.compute"
+
+uniform uint2 MapSize;
+
+RWStructuredBuffer<float4> CurrentDivergence;
+StructuredBuffer<float4> PastVelocity, Walls;
+
+[numthreads(64,1,1)]
+void Divergence (uint3 id : SV_DispatchThreadID)
+{
+    uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
+    
+    if (coord.y >= MapSize.y)
+        return;
+
+    float4x4 cardinals = GetCardinal(int2(coord), int2(MapSize), Walls, PastVelocity, 0);
+
+    // Why 0.5? No clue. Cardinal values found in GetCardinal. East.x - West.x + North.y - South.y
+    float result = 0.5 * (cardinals._21 - cardinals._41 + cardinals._12 - cardinals._32);
+    CurrentDivergence[id.x] = result.xxxx;
+}

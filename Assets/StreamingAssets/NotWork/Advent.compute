@@ -1,0 +1,46 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Advent
+
+uniform float TimeStep, Dissipation;
+uniform uint2 MapSize;
+
+// Float4 decomposition: Velocity is stored in the first two floats. The rest usually use the first float.
+// The rest are padding.
+
+// Textures are... difficult to access in a compute shader.
+// All buffer lengths are identical to one dimensional Map Length.
+RWStructuredBuffer<float4> Current;
+StructuredBuffer<float4> Past, Velocity, Walls;
+
+// Dispatch based on buffer size.
+[numthreads(1,1,1)]
+void Advent (uint3 id : SV_DispatchThreadID)
+{
+    uint2 coord = uint2(id.x % MapSize.x, uint(floor(float(id.x) / float(MapSize.x))));
+    
+    if (coord.y >= MapSize.y)
+        return;
+    
+    float4 velocityData = Velocity[id.x];
+
+    // Back traced position using current velocity vector.
+    float2 backPosition = coord - velocityData.xy * TimeStep;
+
+    backPosition = clamp(backPosition, float2(0, 0), MapSize - float2(1, 1));
+
+    // Bilinear interpolation
+    uint coord00 = floor(backPosition.x) + floor(backPosition.y) * MapSize.x;
+    uint coord01 = floor(backPosition.x) + ceil(backPosition.y) * MapSize.x;
+    uint coord10 = ceil(backPosition.x) + floor(backPosition.y) * MapSize.x;
+    uint coord11 = ceil(backPosition.x) + ceil(backPosition.y) * MapSize.x;
+
+    float2 relative = backPosition - float2(floor(backPosition.x), floor(backPosition.y));
+
+    velocityData.xy = lerp(lerp(Past[coord00].xy, Past[coord10].xy, relative.x),
+        lerp(Past[coord01].xy, Past[coord11].xy, relative.x), relative.y);
+
+    velocityData.xy = Walls[id.x].x > 0 ? float2(0, 0) : velocityData.xy;
+
+    Current[id.x] = velocityData;
+}

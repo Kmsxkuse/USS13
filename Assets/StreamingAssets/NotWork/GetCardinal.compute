@@ -1,0 +1,26 @@
+// ReSharper disable CppInconsistentNaming
+// Fuck C++ naming. C# all the way, wooooo.
+
+// Returns the cardinal direction grid data by passing two checks:
+//     Direction is not out of bounds.
+//     Direction does not contain a solid vector.
+// Else, returns fail check value.
+float4x4 GetCardinal(int2 coord, int2 mapSize, StructuredBuffer<float4> walls,
+    StructuredBuffer<float4> pastBuffer, float4 failCheck)
+{
+    int2 north = coord + int2(0, 1);
+    int2 west = coord + int2(-1, 0);
+    int2 east = coord + int2(1, 0);
+    int2 south = coord + int2(0, -1);
+
+    float4 dataNorth = north.y >= 0 && walls[north.x + north.y * mapSize.x].x < 0
+        ? pastBuffer[north.x + north.y * mapSize.x] : failCheck;
+    float4 dataWest = west.x >= 0 && walls[west.x + west.y * mapSize.x].x < 0
+        ? pastBuffer[west.x + west.y * mapSize.x] : failCheck;
+    float4 dataEast = east.x < mapSize.x && walls[east.x + east.y * mapSize.x].x < 0
+        ? pastBuffer[east.x + east.y * mapSize.x] : failCheck;
+    float4 dataSouth = south.y < mapSize.y && walls[south.x + south.y * mapSize.x].x < 0
+        ? pastBuffer[south.x + south.y * mapSize.x] : failCheck;
+
+    return float4x4(dataNorth, dataEast, dataSouth, dataWest);
+}

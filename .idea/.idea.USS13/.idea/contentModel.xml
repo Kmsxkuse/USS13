@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Jeffrey Wang\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Jeffrey Wang\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_USS13.-2069830682.00" t="ExcludeRecursive" />
+    <e p="D:\USS13" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Components" t="Include">
+            <e p="RenderTextureRotating.cs" t="Include" />
+          </e>
+          <e p="Runtime" t="Include">
+            <e p="Atmo" t="Include">
+              <e p="FluidSim.cs" t="Include" />
+              <e p="Shaders" t="Include">
+                <e p="Advect.shader" t="Include" />
+                <e p="Buoyancy.shader" t="Include" />
+                <e p="Divergence.shader" t="Include" />
+                <e p="GetCardinals.cginc" t="Include" />
+                <e p="GUI.shader" t="Include" />
+                <e p="Impluse.shader" t="Include" />
+                <e p="Jacobi.shader" t="Include" />
+                <e p="Obstacle.shader" t="Include" />
+                <e p="SubtractGradient.shader" t="Include" />
+              </e>
+            </e>
+            <e p="InputCollector.cs" t="Include" />
+            <e p="NetCode" t="Include">
+              <e p="NetworkingCode.cs" t="Include" />
+              <e p="StringExtensions.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="StreamingAssets" t="Include">
+          <e p="NotWork" t="Include">
+            <e p="Advent.compute" t="Include" />
+            <e p="Buoyancy.compute" t="Include" />
+            <e p="ClearBuffer.compute" t="Include" />
+            <e p="Diffuse.compute" t="Include" />
+            <e p="Divergence.compute" t="Include" />
+            <e p="GetCardinal.compute" t="Include" />
+            <e p="Impulse.compute" t="Include" />
+            <e p="Jacobi.compute" t="Include" />
+            <e p="SubtractGradient.compute" t="Include" />
+          </e>
+        </e>
+        <e p="Tiles" t="Include">
+          <e p="CustomRules" t="Include">
+            <e p="SiblingTile.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+      <e p="USS13.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

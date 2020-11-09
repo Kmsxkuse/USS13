@@ -1,0 +1,32 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Diffuse
+
+uniform float TimeStep, DiffusionConstant;
+uniform uint2 MapSize;
+
+RWTexture2D<float> Current;
+uniform Texture2D<float> Previous;
+uniform Texture2D<int> Walls; // Int is the smallest data size I can use. 100 = walls. -100 = no walls.
+
+[numthreads(8,8,1)]
+void Diffuse (uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= MapSize.x || id.y >= MapSize.y || Walls[id.xy] > 0)
+        return;
+    
+    float a = TimeStep * DiffusionConstant * MapSize.x * MapSize.y * 32;
+
+    // Subtract 2 in order to get second to last grid square.
+    uint2 pointWest = uint2(id.x - 1, id.y);
+    uint2 pointEast = uint2(id.x + 1, id.y);
+    uint2 pointSouth = uint2(id.x, id.y - 1);
+    uint2 pointNorth = uint2(id.x, id.y + 1);
+    
+    float2 gridWest = id.x > 0 && Walls[pointWest] < 0? Current[pointWest] : float2(0, 0);
+    float2 gridEast = id.x < MapSize.x - 2 && Walls[pointEast] < 0? Current[pointEast] : float2(0, 0);
+    float2 gridSouth  = id.y > 0 && Walls[pointSouth] < 0? Current[pointSouth] : float2(0, 0);
+    float2 gridNorth  = id.y < MapSize.y - 2 && Walls[pointNorth] < 0? Current[pointNorth] : float2(0, 0);
+
+    Current[id.xy] = (Previous[id.xy] + a * (gridWest + gridEast + gridNorth + gridSouth)) / (1 + 4 * a);
+}

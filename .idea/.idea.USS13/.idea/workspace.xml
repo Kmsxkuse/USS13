@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97e132c7-1955-40fd-97ed-7e8ea95d63bb" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/NetCode/NetworkingCode.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Authoring/MapParsing/GenerateTiles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/GenerateTiles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmospherics.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/InputCollector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Atmospherics.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/ApplySourceChanges.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/AtmoShader.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/AdventVelocity.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Obstacles.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/FluidSim.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Shaders/Obstacle.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/advent.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Diffuse.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/BilinearInter.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/GridData.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Structs.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Components/ShaderStructs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Buoyancy.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/XZ Smoke Sim/FluidSim.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Divergence.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Jacobi.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/GetCardinal.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/SubtractGradient.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Components/ComputeBufferRotating.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/ClearBuffer.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Impulse.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/Advent.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmosphere/MainAtmo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/NotWork/MainAtmo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/NotWork/Advent.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/Shaders/GetCardinal.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/NotWork/GetCardinal.compute" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/Shaders/GetCardinals.cginc" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/Shaders/Jacobi.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/Shaders/Advect.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/Shaders/Divergence.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Components/RenderTextureRotating.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Runtime/Atmo/FluidSim.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ju7voDeXaKS04PZOanX3W9TGYY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30010834" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18036">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="18036" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97e132c7-1955-40fd-97ed-7e8ea95d63bb" name="Default Changelist" comment="" />
+      <created>1604642358645</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604642358645</updated>
+      <workItem from="1604642362498" duration="3016000" />
+      <workItem from="1604687783694" duration="34559000" />
+      <workItem from="1604789978114" duration="24175000" />
+      <workItem from="1604861781507" duration="38223000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="824" y="480" width="747" height="266" key="#ShaderLab" timestamp="1604901029801">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="824" y="480" width="747" height="266" key="#ShaderLab/0.0.1920.1080@0.0.1920.1080" timestamp="1604901029801" />
+    <state x="715" y="161" key="#xdebugger.evaluate" timestamp="1604897873759">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="715" y="161" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1604897873759" />
+    <state width="392" height="618" key="DebuggerActiveHint" timestamp="1604897984568">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="392" height="618" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1604897984568" />
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.0.center" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.0.left" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.0.right" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.1.bottom" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.1.center" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.1.left" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.1.right" timestamp="1604898687541">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687541" />
+    <state width="1877" height="387" key="GridCell.Tab.2.bottom" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.2.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.2.center" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.2.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.2.left" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.2.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.2.right" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.2.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.3.bottom" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.3.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.3.center" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.3.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.3.left" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.3.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state width="1877" height="387" key="GridCell.Tab.3.right" timestamp="1604898687542">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="387" key="GridCell.Tab.3.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604898687542" />
+    <state x="670" y="146" key="RiderGenerateDialog" timestamp="1604901537915">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="670" y="146" key="RiderGenerateDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1604901537915" />
+    <state x="461" y="184" key="SettingsEditor" timestamp="1604884403777">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="461" y="184" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1604884403777" />
+    <state x="639" y="248" width="692" height="674" key="find.popup" timestamp="1604900853408">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="639" y="248" width="692" height="674" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604900853408" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1604691117963">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604691117963" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,28 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// ReSharper disable CppInconsistentNaming
+#pragma kernel Jacobi
+#include "GetCardinal.compute"
+
+float Alpha, InverseBeta;
+uint2 MapSize;
+
+RWStructuredBuffer<float4> CurrentPressure;
+StructuredBuffer<float4> PastPressure, Divergence, Walls;
+
+[numthreads(64,1,1)]
+void Jacobi(uint3 id : SV_DispatchThreadID)
+{
+    uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
+    
+    if (coord.y >= MapSize.y)
+        return;
+
+    float4 presCenter = PastPressure[id.x];
+
+    float4x4 cardinal = GetCardinal(int2(coord), int2(MapSize), Walls, PastPressure, presCenter);
+
+    float diverge = Divergence[id.x].x;
+
+    CurrentPressure[id.x] = ((cardinal._11 + cardinal._21 + cardinal._31 + cardinal._41
+        + Alpha * diverge) * InverseBeta).xxxx;
+}
