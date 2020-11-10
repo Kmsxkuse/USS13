@@ -9,10 +9,10 @@ RWStructuredBuffer<float4> CurrentDivergence;
 StructuredBuffer<float4> PastVelocity, Walls;
 
 [numthreads(64,1,1)]
-void Divergence (uint3 id : SV_DispatchThreadID)
+void Divergence(uint3 id : SV_DispatchThreadID)
 {
     uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
-    
+
     if (coord.y >= MapSize.y)
         return;
 

@@ -36,7 +36,6 @@ Shader "FluidSim/Advect"
 			
 			float4 frag(v2f IN) : COLOR
 			{
-			
 			    float2 u = tex2D(_Velocity, IN.uv).xy;
 			    
 			    float2 coord = IN.uv - u * _InverseSize * _TimeStep;

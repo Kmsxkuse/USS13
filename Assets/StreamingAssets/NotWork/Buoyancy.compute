@@ -10,21 +10,21 @@ StructuredBuffer<float4> DensityTemp, PastVelocity;
 
 // Dispatch based on buffer size.
 [numthreads(64,1,1)]
-void Buoyancy (uint3 id : SV_DispatchThreadID)
+void Buoyancy(uint3 id : SV_DispatchThreadID)
 {
     uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
-    
+
     if (coord.y >= MapSize.y)
         return;
-    
+
     float4 targetVelocity = PastVelocity[id.x];
-    
+
     float density = DensityTemp[id.x].x;
     float temperature = DensityTemp[id.x].y;
 
     targetVelocity.xy += temperature > AmbientTemperature
-        ? (TimeStep * (temperature - AmbientTemperature) * Sigma - density * Kappa ) * float2(0, 1)
-        : float2(0, 0);
+                             ? (TimeStep * (temperature - AmbientTemperature) * Sigma - density * Kappa) * float2(0, 1)
+                             : float2(0, 0);
 
     CurrentVelocity[id.x] = targetVelocity;
 }

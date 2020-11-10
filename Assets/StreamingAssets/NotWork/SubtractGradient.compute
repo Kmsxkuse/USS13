@@ -10,15 +10,15 @@ RWStructuredBuffer<float4> CurrentVelocity;
 StructuredBuffer<float4> PastPressure, PastVelocity, Walls;
 
 [numthreads(64,1,1)]
-void Subtract (uint3 id : SV_DispatchThreadID)
+void Subtract(uint3 id : SV_DispatchThreadID)
 {
     uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
-    
+
     if (coord.y >= MapSize.y)
         return;
 
     float4 presCenter = PastPressure[id.x];
-    
+
     float4x4 cardinal = GetCardinal(int2(coord), int2(MapSize), Walls, PastPressure, presCenter);
 
     // Enforce the free-slip boundary condition:

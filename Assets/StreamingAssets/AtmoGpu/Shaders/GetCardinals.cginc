@@ -16,13 +16,17 @@ float4x4 GetCardinal(float2 uv, float2 inverseSize, sampler2D obstacles, sampler
 
     // Bounds check not needed for tex2D with clamped textures. Woo.
     float4 dataNorth = tex2D(obstacles, north).x <= 0.0
-        ? tex2D(success, north) : fail;
+                           ? tex2D(success, north)
+                           : fail;
     float4 dataWest = tex2D(obstacles, west).x <= 0.0
-        ? tex2D(success, west) : fail;
+                          ? tex2D(success, west)
+                          : fail;
     float4 dataEast = tex2D(obstacles, east).x <= 0.0
-        ? tex2D(success, east) : fail;
+                          ? tex2D(success, east)
+                          : fail;
     float4 dataSouth = tex2D(obstacles, south).x <= 0.0
-        ? tex2D(success, south) : fail;
+                           ? tex2D(success, south)
+                           : fail;
 
     return float4x4(dataNorth, dataEast, dataSouth, dataWest);
 }

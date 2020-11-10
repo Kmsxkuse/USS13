@@ -7,10 +7,10 @@ uint2 MapSize;
 RWStructuredBuffer<float4> TargetBuffer;
 
 [numthreads(64,1,1)]
-void ClearBuffer (uint3 id : SV_DispatchThreadID)
+void ClearBuffer(uint3 id : SV_DispatchThreadID)
 {
     uint coordY = floor(id.x / MapSize.x);
-    
+
     if (coordY >= MapSize.y)
         return;
 

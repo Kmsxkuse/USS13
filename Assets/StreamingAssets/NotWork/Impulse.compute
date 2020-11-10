@@ -10,19 +10,19 @@ RWStructuredBuffer<float4> Current;
 StructuredBuffer<float4> Past;
 
 [numthreads(64,1,1)]
-void Impulse (uint3 id : SV_DispatchThreadID)
+void Impulse(uint3 id : SV_DispatchThreadID)
 {
     uint2 coord = uint2(id.x % MapSize.x, uint(floor(float(id.x) / float(MapSize.x))));
-    
+
     if (coord.y >= MapSize.y)
         return;
-    
+
     float dist = distance(coord, Point);
 
     float impulse = dist < Radius ? min((Radius - dist) * 0.5f, 1.0f) : 0;
-    
+
     float4 source = Past[id.x];
     source.xy = max(float2(0, 0), lerp(source.xy, Fill, impulse));
-    
+
     Current[id.x] = float4(1, 1, 1, 1);
 }

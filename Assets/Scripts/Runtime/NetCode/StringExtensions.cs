@@ -8,7 +8,7 @@ namespace Runtime.NetCode
     public static class StringExtensions
     {
         /// <summary>
-        /// Compresses a string and returns a deflate compressed, Base64 encoded string.
+        ///     Compresses a string and returns a deflate compressed, Base64 encoded string.
         /// </summary>
         /// <param name="uncompressedString">String to compress</param>
         public static string Compress(this string uncompressedString)
@@ -36,7 +36,7 @@ namespace Runtime.NetCode
         }
 
         /// <summary>
-        /// Decompresses a deflate compressed, Base64 encoded string and returns an uncompressed string.
+        ///     Decompresses a deflate compressed, Base64 encoded string and returns an uncompressed string.
         /// </summary>
         /// <param name="compressedString">String to decompress.</param>
         public static string Decompress(this string compressedString)

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using System.Text;
 using Unity.Entities;
@@ -11,22 +10,21 @@ namespace Runtime.NetCode
 {
     public class NetworkingCode : MonoBehaviour
     {
+        public static RTCDataChannel DataChannel;
+        private static RTCPeerConnection _peerConnection;
         public GameObject SubtextObject;
         public GameObject ButtonTextObject;
         public GameObject GoBackObject;
-    
+
         public GameObject HostToggleObject;
         public GameObject HostToggleStartingText;
         public GameObject HostToggleNotice;
-    
-        public static RTCDataChannel DataChannel;
-        private static RTCPeerConnection _peerConnection;
+        private ButtonStages _buttonStage = ButtonStages.DeterminingHostOrClient;
+        private EntityManager _em;
+        private string _iceCompressed;
+        private Button _networkButton;
 
         private Text _subtext, _buttonText;
-        private EntityManager _em;
-        private Button _networkButton;
-        private ButtonStages _buttonStage = ButtonStages.DeterminingHostOrClient;
-        private string _iceCompressed;
 
         private void Start()
         {
@@ -36,43 +34,38 @@ namespace Runtime.NetCode
             _networkButton = GetComponent<Button>();
         }
 
+        private void OnDestroy()
+        {
+            Debug.LogError("WebRTC disposed.");
+            WebRTC.Dispose();
+        }
+
         public void ClickButton()
         {
             // Disabling button.
             _networkButton.interactable = false;
-        
-            StartCoroutine(WaitForNetworking());
-        }
 
-        private enum ButtonStages
-        {
-            Error,
-            DeterminingHostOrClient,
-            Client,
-            ClientPaste,
-            ClientVerify,
-            ClientSendToNetworking,
-            HostPaste,
-            HostVerify,
-            HostSendToNetworking,
-            NotReady
+            StartCoroutine(WaitForNetworking());
         }
 
         private void InitializeWebRtc()
         {
             WebRTC.Initialize();
-            
+
             var config = new RTCConfiguration
             {
-                iceServers = new []{new RTCIceServer
+                iceServers = new[]
                 {
-                    urls = new []{"stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"}
-                }}
+                    new RTCIceServer
+                    {
+                        urls = new[] {"stun:stun.l.google.com:19302", "stun:stun1.l.google.com:19302"}
+                    }
+                }
             };
             _peerConnection = new RTCPeerConnection(ref config);
             _peerConnection.OnIceConnectionChange = state => Debug.LogError("State changed: " + state);
             Debug.LogError("PeerConnection created.");
-            
+
             var dcInit = new RTCDataChannelInit(true);
             DataChannel = _peerConnection.CreateDataChannel("dataChannel", ref dcInit);
             DataChannel.OnOpen = () => Debug.LogError("Data channel opened.");
@@ -94,7 +87,7 @@ namespace Runtime.NetCode
             var textEditor = new TextEditor();
             var timeoutCounter = 0;
             RTCSessionDescription description;
-            
+
             switch (_buttonStage)
             {
                 case ButtonStages.Error: // Error
@@ -107,13 +100,13 @@ namespace Runtime.NetCode
                 case ButtonStages.DeterminingHostOrClient: // Determining host or client
                     HostToggleStartingText.SetActive(false);
                     HostToggleNotice.SetActive(true);
-                
+
                     InitializeWebRtc();
 
                     // True = Host. False = Client.
                     var hostToggle = HostToggleObject.GetComponent<Toggle>().isOn;
                     HostToggleNotice.GetComponent<Text>().text += hostToggle ? "Host." : "Client.";
-                
+
                     HostToggleObject.SetActive(false);
 
                     if (hostToggle)
@@ -136,18 +129,18 @@ namespace Runtime.NetCode
 
                         if (timeoutCounter > 4)
                             goto case ButtonStages.Error;
-                    
+
                         _subtext.text += ".";
                         yield return new WaitForSeconds(1f);
                     }
 
                     description = clientOffer.Desc;
-                    
+
                     yield return _peerConnection.SetLocalDescription(ref description);
-                
+
                     _subtext.text = "Unique SDP protocol address received.\n" +
                                     "Please paste it in Discord for the host to copy.";
-                
+
                     textEditor.text = JsonUtility.ToJson(description).Compress();
                     textEditor.SelectAll();
                     textEditor.Copy();
@@ -156,7 +149,7 @@ namespace Runtime.NetCode
                     break;
                 case ButtonStages.ClientPaste:
                     GoBackObject.SetActive(false);
-                
+
                     _subtext.fontSize = 70;
                     _subtext.text = "Please copy unique SDP address from Discord from host.\n" +
                                     "Make sure not to include any whitespace or external characters.";
@@ -165,12 +158,12 @@ namespace Runtime.NetCode
                     break;
                 case ButtonStages.ClientVerify:
                     GoBackObject.SetActive(true);
-                
+
                     _buttonText.text = "Continue.";
-                
+
                     textEditor.Paste();
                     _iceCompressed = textEditor.text.Trim();
-                
+
                     _subtext.fontSize = 25;
                     _subtext.text = "Given SDP Address:\n" + _iceCompressed;
 
@@ -179,7 +172,7 @@ namespace Runtime.NetCode
                 case ButtonStages.ClientSendToNetworking:
                     GoBackObject.SetActive(false);
                     _buttonText.text = "Attempting to connect.";
-                    
+
                     description = JsonUtility.FromJson<RTCSessionDescription>(_iceCompressed.Decompress());
                     yield return _peerConnection.SetRemoteDescription(ref description);
 
@@ -188,7 +181,7 @@ namespace Runtime.NetCode
                     break;
                 case ButtonStages.HostPaste: // Host
                     GoBackObject.SetActive(false);
-                
+
                     _subtext.fontSize = 70;
                     _subtext.text = "Please copy unique SDP address from Discord from client.\n" +
                                     "Make sure not to include any whitespace or external characters.";
@@ -197,12 +190,12 @@ namespace Runtime.NetCode
                     break;
                 case ButtonStages.HostVerify:
                     GoBackObject.SetActive(true);
-                
+
                     _buttonText.text = "Continue.";
-                
+
                     textEditor.Paste();
                     _iceCompressed = textEditor.text.Trim();
-                
+
                     _subtext.fontSize = 25;
                     _subtext.text = "Given SDP Address:\n" + _iceCompressed;
 
@@ -210,7 +203,7 @@ namespace Runtime.NetCode
                     break;
                 case ButtonStages.HostSendToNetworking: // Host paste SDP address.
                     GoBackObject.SetActive(false);
-                
+
                     _subtext.fontSize = 70;
                     _subtext.text = "Please wait. Generating SDP address.";
                     _buttonText.text = "Save SDP address to clipboard.";
@@ -231,21 +224,21 @@ namespace Runtime.NetCode
 
                         if (timeoutCounter > 4)
                             goto case ButtonStages.Error;
-                    
+
                         _subtext.text += ".";
                         yield return new WaitForSeconds(1f);
                     }
-                    
+
                     _subtext.text = "Unique SDP protocol address received.\n" +
-                                     "Please paste it in Discord for the client to copy.";
+                                    "Please paste it in Discord for the client to copy.";
 
                     description = hostAnswer.Desc;
                     yield return _peerConnection.SetLocalDescription(ref description);
-                
+
                     textEditor.text = JsonUtility.ToJson(description).Compress();
                     textEditor.SelectAll();
                     textEditor.Copy();
-                    
+
                     _buttonStage = ButtonStages.NotReady;
                     break;
                 case ButtonStages.NotReady:
@@ -268,14 +261,22 @@ namespace Runtime.NetCode
                     _buttonStage = ButtonStages.ClientPaste;
                     break;
             }
-        
+
             StartCoroutine(WaitForNetworking());
         }
 
-        private void OnDestroy()
+        private enum ButtonStages
         {
-            Debug.LogError("WebRTC disposed.");
-            WebRTC.Dispose();
+            Error,
+            DeterminingHostOrClient,
+            Client,
+            ClientPaste,
+            ClientVerify,
+            ClientSendToNetworking,
+            HostPaste,
+            HostVerify,
+            HostSendToNetworking,
+            NotReady
         }
     }
 }

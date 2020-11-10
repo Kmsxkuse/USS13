@@ -13,7 +13,7 @@ StructuredBuffer<float4> PastPressure, Divergence, Walls;
 void Jacobi(uint3 id : SV_DispatchThreadID)
 {
     uint2 coord = uint2(id.x % MapSize.x, floor(id.x / MapSize.x));
-    
+
     if (coord.y >= MapSize.y)
         return;
 

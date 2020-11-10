@@ -1,24 +1,22 @@
 using System;
-using Unity.Mathematics;
 using UnityEngine;
 
-namespace Components
+namespace Runtime.AtmoGpu
 {
     public struct RenderTextureRotating : IDisposable
     {
         public RenderTexture Write, Read;
 
-        public RenderTextureRotating(int width, int height, RenderTextureFormat format, FilterMode filter,
-            RenderTextureReadWrite readWrite = RenderTextureReadWrite.Default)
+        public RenderTextureRotating(int width, int height, RenderTextureFormat format, FilterMode filter)
         {
-            Write = new RenderTexture(width, height, 0, format, readWrite)
+            Write = new RenderTexture(width, height, 0, format)
             {
                 filterMode = filter,
                 wrapMode = TextureWrapMode.Clamp
             };
             Write.Create();
-            
-            Read = new RenderTexture(width, height, 0, format, readWrite)
+
+            Read = new RenderTexture(width, height, 0, format)
             {
                 filterMode = filter,
                 wrapMode = TextureWrapMode.Clamp

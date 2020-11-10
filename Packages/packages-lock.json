@@ -72,13 +72,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.cinemachine": {
-      "version": "2.6.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.collections": {
       "version": "0.14.0-preview.16",
       "depth": 1,
@@ -240,6 +233,15 @@
         "com.unity.mathematics": "1.1.0",
         "com.unity.render-pipelines.core": "10.1.0",
         "com.unity.shadergraph": "10.1.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.rendering.hybrid": {
+      "version": "0.10.0-preview.21",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.entities": "0.16.0-preview.21"
       },
       "url": "https://packages.unity.com"
     },

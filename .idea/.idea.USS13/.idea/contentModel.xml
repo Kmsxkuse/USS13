@@ -7,23 +7,10 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="Components" t="Include">
-            <e p="RenderTextureRotating.cs" t="Include" />
-          </e>
           <e p="Runtime" t="Include">
-            <e p="Atmo" t="Include">
+            <e p="AtmoGpu" t="Include">
               <e p="FluidSim.cs" t="Include" />
-              <e p="Shaders" t="Include">
-                <e p="Advect.shader" t="Include" />
-                <e p="Buoyancy.shader" t="Include" />
-                <e p="Divergence.shader" t="Include" />
-                <e p="GetCardinals.cginc" t="Include" />
-                <e p="GUI.shader" t="Include" />
-                <e p="Impluse.shader" t="Include" />
-                <e p="Jacobi.shader" t="Include" />
-                <e p="Obstacle.shader" t="Include" />
-                <e p="SubtractGradient.shader" t="Include" />
-              </e>
+              <e p="RenderTextureRotating.cs" t="Include" />
             </e>
             <e p="InputCollector.cs" t="Include" />
             <e p="NetCode" t="Include">
@@ -33,6 +20,19 @@
           </e>
         </e>
         <e p="StreamingAssets" t="Include">
+          <e p="AtmoGpu" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="Advect.shader" t="Include" />
+              <e p="Buoyancy.shader" t="Include" />
+              <e p="Divergence.shader" t="Include" />
+              <e p="GetCardinals.cginc" t="Include" />
+              <e p="GUI.shader" t="Include" />
+              <e p="Impluse.shader" t="Include" />
+              <e p="Jacobi.shader" t="Include" />
+              <e p="Obstacle.shader" t="Include" />
+              <e p="SubtractGradient.shader" t="Include" />
+            </e>
+          </e>
           <e p="NotWork" t="Include">
             <e p="Advent.compute" t="Include" />
             <e p="Buoyancy.compute" t="Include" />
